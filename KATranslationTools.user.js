@@ -172,7 +172,7 @@ function key_event(e) {
   // Other fixes, Alt+Q
   if (e.altKey && e.keyCode == 81) {
       //Dollary
-      simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "\$$1{\\,}€\$");
+      simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\,}€\$");
       //Decimal dot to comma
       simpleReplaceInTxtbox(/(-?\d+)\.(-?\d+)/g, "$1{,}$2");
       //In number: Need {\,} instead of {\ }
