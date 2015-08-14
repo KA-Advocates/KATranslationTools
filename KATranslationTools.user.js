@@ -166,8 +166,8 @@ function key_event(e) {
   }
   // Fix coordinates, Alt+W
   if (e.altKey && e.keyCode == 87) {
-      var expr = /\$(\\left)?\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])(\\right)?\)\$/g;
-      simpleReplaceInTxtbox(expr, "\$($2{\\,}|{\\,}$5)\$");
+      var expr = /\$\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])\)\$/g;
+      simpleReplaceInTxtbox(expr, "\$($1{\\,}|{\\,}$4)\$");
   }
   // Other fixes, Alt+Q
   if (e.altKey && e.keyCode == 81) {
