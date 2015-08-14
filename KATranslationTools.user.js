@@ -167,7 +167,7 @@ function key_event(e) {
   // Fix coordinates, Alt+W
   if (e.altKey && e.keyCode == 87) {
       var expr = /\$(\\left)?\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z])(\\right)?\)\$/g;
-      simpleReplaceInTxtbox(expr, "\$($2{\\,}|{\\,}$4)\$");
+      simpleReplaceInTxtbox(expr, "\$($2{\\,}|{\\,}$5)\$");
   }
   // Other fixes, Alt+Q
   if (e.altKey && e.keyCode == 81) {
