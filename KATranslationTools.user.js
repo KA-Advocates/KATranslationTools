@@ -70,6 +70,8 @@
       else {txtBox.innerHTML = newTxtBoxValue;}
   }
 
+  var imagesShown = false;
+
   /**
    * Simple replace without looking at original (untranslated) string.
    */
@@ -80,7 +82,7 @@
       var sourceStr = myDoc.innerText;
       var expr =  /!\[\]\(([^\)]+)\)/g;
       while (( result = expr.exec(sourceStr)) !== null  ) {
-        var tag = "<img src=\"" + result[1] + "\" />";
+        var tag = "<img class=\"greasemonkey-image\" src=\"" + result[1] + "\" />";
         console.log(tag);
           $("#translation_text_container").prepend(tag);
       }
@@ -176,8 +178,13 @@
     }
     // Alt+L: Show images in text
     if (e.altKey && e.keyCode == 76) {
-
-      showImages();
+      if(imagesShown) {
+        $(".greasemonkey-image").remove();
+        imagesShown = false;
+      } else {
+        showImages();
+        imagesShown = true;
+      }
     }
     // Replace math formulas contained in Dollar signs, Alt+U
     if (e.altKey && e.keyCode == 85) {
