@@ -4,7 +4,7 @@
   // @include     https://crowdin.com/translate/khanacademy/*
   // @include     https://translate.khanacademy.org/translate/*
   // @description Various keyboard shortcuts to make KA translation on crowdin a little bit easier
-  // @version     0.5.2
+  // @version     0.5.3
   // @grant       none
   // @author      Alain Schaefer & Uli Köhler
   // @updateURL   https://gist.githubusercontent.com/alani1/a62cd694ba35ed11744e/raw/KATranslationTools.user.js
@@ -212,6 +212,9 @@
         simpleReplaceInTxtbox(/daß/g, "dass");
         //daß -> dass
         simpleReplaceInTxtbox(/\.\s*\*\s+\*/g, ".**");
+        //40€ -> 40{\,}€ (simple cases)
+        simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\,}€");
+        simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\,}€$$");
         //x-intercept / y-intercept
         simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
         simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
