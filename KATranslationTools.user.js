@@ -195,7 +195,7 @@
       }
       // Fix coordinates, Alt+W
       if (e.altKey && e.keyCode == 87) {
-          var expr = /\$(\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?| -?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*\)(\}?)\$/g;
+          var expr = /\$(\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*\)(\}?)\$/g;
           simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
       }
       // Other fixes, Alt+Q
@@ -224,6 +224,9 @@
           simpleReplaceInTxtbox(/^In conclusion, the equation has one solution:/g, "Zusammenfassend hat die Gleichung eine Lösung:");
           simpleReplaceInTxtbox(/Find the complex conjugate (.*) of/g, "Finde die Konjugierte $1 von");
           simpleReplaceInTxtbox(/Your answer should be a complex number in the form \$a\+bi\$ where \$a\$ and \$b\$ are real numbers./g, "Deine Antwort sollte eine Komplexe Zahl im Format $$a+bi$$ sein, wobei $$a$$ und $$b$$ reelle Zahlen sind.");
+          simpleReplaceInTxtbox(/What are the real and imaginary parts of (\$[a-z]\$) ?\?/g, "Was ist der Real- und Imaginärteil von $1 ?");
+          simpleReplaceInTxtbox(/Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?/g, "Sind die Vektoren $2 und $3 äquivalent?");
+          simpleReplaceInTxtbox(/Is the matrix (\$[A-Z]\$) invertible\?/g, "Ist die Matrix $1 invertierbar?");
           simpleReplaceInTxtbox(/The answer is:/g, "Die Antwort ist:");
           simpleReplaceInTxtbox(/The answer:?/g, "Die Antwort:");
           simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
@@ -245,6 +248,8 @@
           simpleReplaceInTxtbox(/ and so /g, ", also gilt: ");
           simpleReplaceInTxtbox(/ and /g, " und ");
           simpleReplaceInTxtbox(/ for /g, " für ");
+          simpleReplaceInTxtbox(/ converges/g, " konvergiert");
+          simpleReplaceInTxtbox(/ diverges/g, " divergiert");
           simpleReplaceInTxtbox(/Only/g, "Nur");
 
       }
