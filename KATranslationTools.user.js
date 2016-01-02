@@ -218,6 +218,10 @@
         //x-intercept / y-intercept
         simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
         simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
+        //and -> und
+        simpleReplaceInTxtbox(/ and /g, " und ");
+        simpleReplaceInTxtbox(/ units /g, " Einheiten ");
+        simpleReplaceInTxtbox(/ units$/g, " Einheiten");
 
     }
   }
