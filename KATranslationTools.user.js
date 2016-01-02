@@ -195,7 +195,7 @@
       }
       // Fix coordinates, Alt+W
       if (e.altKey && e.keyCode == 87) {
-          var expr = /\$(\{?)\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?| -?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+\})\)(\}?)\$/g;
+          var expr = /\$(\{?)\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?| -?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\)(\}?)\$/g;
           simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
       }
       // Other fixes, Alt+Q
@@ -218,15 +218,26 @@
           //x-intercept / y-intercept
           simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
           simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
-          //and -> und
+          //and -> und and other simple phrase replacements
+          simpleReplaceInTxtbox(/Both ([A-Z][a-z]+) and ([A-Z][a-z]+)/g, "Sowohl $1 als auch $2");
+          simpleReplaceInTxtbox(/Yes, (.*) is correct but (.*) is not(\.?)/g, "Ja, $1 liegt richtig, aber $2 nicht.");
+          simpleReplaceInTxtbox(/^In conclusion, the equation has one solution:/g, "Zusammenfassend hat die Gleichung eine Lösung:");
+          simpleReplaceInTxtbox(/The answer is:/g, "Die Antwort ist:");
+          simpleReplaceInTxtbox(/The answer:/g, "Die Antwort:");
+          simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
+          simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt: ");
+          simpleReplaceInTxtbox(/To conclude\s*[:,]?\s*/g, "Zusammenfassend gilt: ");
+          simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
+          simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
+          simpleReplaceInTxtbox(/Summary:? /g, "Zusammenfassung: ");
           simpleReplaceInTxtbox(/ unit /g, " Einheit");
           simpleReplaceInTxtbox(/ units /g, " Einheiten ");
           simpleReplaceInTxtbox(/ units$/g, " Einheiten");
           simpleReplaceInTxtbox(/ unit$/g, " Einheit");
-          simpleReplaceInTxtbox(/The answer is:/g, "Die Antwort ist:");
-          simpleReplaceInTxtbox(/The answer:/g, "Die Antwort:");
           simpleReplaceInTxtbox(/ and so /g, ", also gilt: ");
           simpleReplaceInTxtbox(/ and /g, " und ");
+          simpleReplaceInTxtbox(/ for /g, " für ");
+          simpleReplaceInTxtbox(/Only/g, "Nur");
 
       }
     }
