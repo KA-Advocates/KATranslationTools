@@ -195,7 +195,7 @@
       }
       // Fix coordinates, Alt+W
       if (e.altKey && e.keyCode == 87) {
-          var expr = /\$(\{?)\((-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?| -?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\)(\}?)\$/g;
+          var expr = /\$(\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?| -?[a-z]|-?\\\\[a-z]+[A-Z]?\{\d+[.,]?\d*\})\s*\)(\}?)\$/g;
           simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
       }
       // Other fixes, Alt+Q
@@ -222,14 +222,22 @@
           simpleReplaceInTxtbox(/Both ([A-Z][a-z]+) and ([A-Z][a-z]+)/g, "Sowohl $1 als auch $2");
           simpleReplaceInTxtbox(/Yes, (.*) is correct but (.*) is not(\.?)/g, "Ja, $1 liegt richtig, aber $2 nicht.");
           simpleReplaceInTxtbox(/^In conclusion, the equation has one solution:/g, "Zusammenfassend hat die Gleichung eine Lösung:");
+          simpleReplaceInTxtbox(/Find the complex conjugate (.*) of/g, "Finde die Konjugierte $1 von");
+          simpleReplaceInTxtbox(/Your answer should be a complex number in the form \$a\+bi\$ where \$a\$ and \$b\$ are real numbers./g, "Deine Antwort sollte eine Komplexe Zahl im Format $$a+bi$$ sein, wobei $$a$$ und $$b$$ reelle Zahlen sind.");
           simpleReplaceInTxtbox(/The answer is:/g, "Die Antwort ist:");
-          simpleReplaceInTxtbox(/The answer:/g, "Die Antwort:");
+          simpleReplaceInTxtbox(/The answer:?/g, "Die Antwort:");
           simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
-          simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt: ");
-          simpleReplaceInTxtbox(/To conclude\s*[:,]?\s*/g, "Zusammenfassend gilt: ");
+          simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
+          simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
           simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
+          simpleReplaceInTxtbox(/What type of number is/g, "Welche Art Zahl ist");
           simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
-          simpleReplaceInTxtbox(/Summary:? /g, "Zusammenfassung: ");
+          simpleReplaceInTxtbox(/Summary:? ?/g, "Zusammenfassung: ");
+          simpleReplaceInTxtbox(/Conclusion:? ?/g, "Schlussfolgerung: ");
+          simpleReplaceInTxtbox(/Express your answer in the form/g, "Schreibe deine Antwort in der Form");
+          simpleReplaceInTxtbox(/ is real and complex/g, " ist eine reale und komplexe Zahl");
+          simpleReplaceInTxtbox(/ is pure imaginary and complex/g, " ist rein imaginär und daher eine komplexe Zahl");
+          simpleReplaceInTxtbox(/ is complex/g, " ist eine komplexe Zahl");
           simpleReplaceInTxtbox(/ unit /g, " Einheit");
           simpleReplaceInTxtbox(/ units /g, " Einheiten ");
           simpleReplaceInTxtbox(/ units$/g, " Einheiten");
@@ -241,4 +249,4 @@
 
       }
     }
-    document.addEventListener('keydown', key_event, true);
+    document.addEventListener('keydown', key_event, true);  
