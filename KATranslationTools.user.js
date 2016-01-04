@@ -7,7 +7,7 @@
 // @version     0.5.3
 // @grant       none
 // @author      Alain Schaefer & Uli Köhler
-// @updateURL   https://gist.githubusercontent.com/alani1/a62cd694ba35ed11744e/raw/KATranslationTools.user.js
+// @updateURL   https://raw.githubusercontent.com/ulikoehler/KATranslationTools/master/KATranslationTools.user.js
 // ==/UserScript==
 
 /*
