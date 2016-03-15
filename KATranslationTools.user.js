@@ -236,7 +236,7 @@ function key_event(e) {
       simpleReplaceInTxtbox(/What type of number is/g, "Welche Art Zahl ist");
       simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
       simpleReplaceInTxtbox(/Summary:? ?/g, "Zusammenfassung: ");
-      simpleReplaceInTxtbox(/Conclusion:? ?/g, "Schlussfolgerung: ");
+      simpleReplaceInTxtbox(/Conclusion(:?) ?/g, "Schlussfolgerung\1");
       simpleReplaceInTxtbox(/Express your answer in the form/g, "Schreibe deine Antwort in der Form");
       simpleReplaceInTxtbox(/ is real and complex/g, " ist eine reale und komplexe Zahl");
       simpleReplaceInTxtbox(/ is pure imaginary and complex/g, " ist rein imaginär und daher eine komplexe Zahl");
