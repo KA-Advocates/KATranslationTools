@@ -233,7 +233,12 @@ function key_event(e) {
       simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
       simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
       simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
+      simpleReplaceInTxtbox(/\bunits\b/g, "Einheiten");
       simpleReplaceInTxtbox(/What type of number is/g, "Welche Art Zahl ist");
+      simpleReplaceInTxtbox(/Pythagorean theorem/g, "Satz des Pythagoras");
+      simpleReplaceInTxtbox(/Step(\s+\d+)/g, "Schritt\1");
+      simpleReplaceInTxtbox(/[Ss]quare root/g, "Quadratwurzel");
+      simpleReplaceInTxtbox(/[Cc]ube root/g, "Kubikwurzel");
       simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
       simpleReplaceInTxtbox(/Summary(:?) ?/g, "Zusammenfassung\1");
       simpleReplaceInTxtbox(/Conclusion(:?) ?/g, "Schlussfolgerung\1");
