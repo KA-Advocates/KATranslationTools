@@ -70,6 +70,44 @@ function simpleReplaceInTxtbox(regex, replacement) {
     else {txtBox.innerHTML = newTxtBoxValue;}
 }
 
+/**
+ * Simple replace without looking at original (untranslated) string.
+ */
+function findTextSegments() {
+    var txtBox = document.getElementById('translation');
+    var valueIsInValueProperty = (txtBox.innerHTML == "");
+    var txtBoxValue = (txtBox.innerHTML || txtBox.value);
+    var matches = [];
+    var found;
+    var rgx = /\\\\text\{([^\}]+)\}/g;
+    while (found = rgx.exec(txtBoxValue)) {
+        matches.push(found[1]);
+    }
+    return matches;
+}
+
+/**
+ * Simple replace without looking at original (untranslated) string.
+ */
+function replaceTextSegments(newSegments) {
+    var txtBox = document.getElementById('translation');
+    var valueIsInValueProperty = (txtBox.innerHTML == "");
+    var txtBoxValue = (txtBox.innerHTML || txtBox.value);
+    var toReplace = [];
+    var found;
+    var rgx = /\\\\text\{([^\}]+)\}/g;
+    while (found = rgx.exec(txtBoxValue)) {
+        toReplace.push("\\\\text{" + found[1] + "}");
+    }
+    console.log(toReplace);
+    console.log(newSegments);
+    //
+    for (var i = newSegments.length - 1; i >= 0; i--) {
+      console.log("Replacing " + toReplace[i] + " by " + newSegments[i]);
+      simpleReplaceInTxtbox(toReplace[i], "\\\\text{" + newSegments[i] + "}");
+    }
+}
+
 var imagesShown = false;
 
 /**
@@ -188,10 +226,14 @@ function key_event(e) {
   }
   // Replace math formulas contained in Dollar signs, Alt+U
   if (e.altKey && e.keyCode == 85) {
+        //Find \\text{...} segments that we can re-insert later
+        var textSegments = findTextSegments();
       // TODO: need to correctly handle escpade Dollar signs e.g. \$ should not be machted as start or end string works in Python and PHP \$.+?(?<!\\)\$ but no in javascript
         var expr = /(\$.+?\$)/g
         var expr2 = /(\$.+?\$)/g
         replacePattern(expr,expr2);
+        //Re-insert text segments
+        replaceTextSegments(textSegments);
   }
   // Fix coordinates, Alt+W
   if (e.altKey && e.keyCode == 87) {
