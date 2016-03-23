@@ -203,7 +203,7 @@ function key_event(e) {
       //Dollary
       simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\,}€\$");
       //Decimal dot to comma
-      simpleReplaceInTxtbox(/(-?\d+)\.(-?\d+)/g, "$1{,}$2");
+      simpleReplaceInTxtbox(/(-?\d+\}?)\.(-?\d+|\\\\[a-z]+\{\d+)/g, "$1{,}$2");
       //In number: Need {\,} instead of {\ }
       simpleReplaceInTxtbox(/(\d+)\{\\ \}(\d+)/g, "$1{\\,}$2");
       //In number: Need percentage
