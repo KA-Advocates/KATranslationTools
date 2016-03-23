@@ -95,13 +95,12 @@ function replaceTextSegments(newSegments) {
     var txtBoxValue = (txtBox.innerHTML || txtBox.value);
     var toReplace = [];
     var found;
+    //Search current values that should be replaced
     var rgx = /\\\\text\{([^\}]+)\}/g;
     while (found = rgx.exec(txtBoxValue)) {
         toReplace.push("\\\\text{" + found[1] + "}");
     }
-    console.log(toReplace);
-    console.log(newSegments);
-    //
+    //Perform replace
     for (var i = newSegments.length - 1; i >= 0; i--) {
       console.log("Replacing " + toReplace[i] + " by " + newSegments[i]);
       simpleReplaceInTxtbox(toReplace[i], "\\\\text{" + newSegments[i] + "}");
@@ -258,10 +257,8 @@ function key_event(e) {
       simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\,}€");
       simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\,}€$$");
       //x-intercept / y-intercept
-      simpleReplaceInTxtbox(/\$x\$-intercept/g, "$$x$$-Achsenabschnitt");
-      simpleReplaceInTxtbox(/\$y\$-intercept/g, "$$y$$-Achsenabschnitt");
-      simpleReplaceInTxtbox(/x-intercept/g, "x-Achsenabschnitt");
-      simpleReplaceInTxtbox(/y-intercept/g, "y-Achsenabschnitt");
+      simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
+      simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
       //and -> und and other simple phrase replacements
       simpleReplaceInTxtbox(/Both ([A-Z][a-z]+) and ([A-Z][a-z]+)/g, "Sowohl $1 als auch $2");
       simpleReplaceInTxtbox(/Yes, (.*) is correct but (.*) is not(\.?)/g, "Ja, $1 liegt richtig, aber $2 nicht.");
@@ -271,11 +268,10 @@ function key_event(e) {
       simpleReplaceInTxtbox(/What are the real and imaginary parts of (\$[a-z]\$) ?\?/g, "Was ist der Real- und Imaginärteil von $1 ?");
       simpleReplaceInTxtbox(/Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?/g, "Sind die Vektoren $2 und $3 äquivalent?");
       simpleReplaceInTxtbox(/Is the matrix (\$[A-Z]\$) invertible\?/g, "Ist die Matrix $1 invertierbar?");
-      simpleReplaceInTxtbox(/The answer is(:?)/g, "Die Antwort ist$1");
-      simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort$1");
+      simpleReplaceInTxtbox(/The answer is(:?)/g, "Die Antwort ist\1");
+      simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort\1");
       simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
-      simpleReplaceInTxtbox(/In conclusion(, )?/g, "Zusammenfassend gilt");
-      simpleReplaceInTxtbox(/In conclusion(, )?/g, "Zusammenfassend gilt");
+      simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
       simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
       simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
       simpleReplaceInTxtbox(/\bunits\b/g, "Einheiten");
