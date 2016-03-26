@@ -269,7 +269,7 @@ function key_event(e) {
       simpleReplaceInTxtbox(/Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?/g, "Sind die Vektoren $2 und $3 äquivalent?");
       simpleReplaceInTxtbox(/Is the matrix (\$[A-Z]\$) invertible\?/g, "Ist die Matrix $1 invertierbar?");
       simpleReplaceInTxtbox(/The answer is(:?)/g, "Die Antwort ist\1");
-      simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort\1");
+      simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort$1");
       simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
       simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
       simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
