@@ -79,9 +79,9 @@ function findTextSegments() {
     var txtBoxValue = (txtBox.innerHTML || txtBox.value);
     var matches = [];
     var found;
-    var rgx = /\\\\text\{([^\}]+)\}/g;
+    var rgx = /\\\\text\s?\{([^\}]+)\}/g;
     while (found = rgx.exec(txtBoxValue)) {
-        matches.push(found[1]);
+        matches.push(found[0]);
     }
     return matches;
 }
@@ -96,14 +96,14 @@ function replaceTextSegments(newSegments) {
     var toReplace = [];
     var found;
     //Search current values that should be replaced
-    var rgx = /\\\\text\{([^\}]+)\}/g;
+    var rgx = /\\\\text\s?\{([^\}]+)\}/g;
     while (found = rgx.exec(txtBoxValue)) {
-        toReplace.push("\\\\text{" + found[1] + "}");
+        toReplace.push(found[0]);
     }
     //Perform replace
     for (var i = newSegments.length - 1; i >= 0; i--) {
       console.log("Replacing " + toReplace[i] + " by " + newSegments[i]);
-      simpleReplaceInTxtbox(toReplace[i], "\\\\text{" + newSegments[i] + "}");
+      simpleReplaceInTxtbox(toReplace[i], newSegments[i]);
     }
 }
 
