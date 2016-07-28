@@ -281,8 +281,8 @@ function key_event(e) {
       simpleReplaceInTxtbox(/[Ss]quare root/g, "Quadratwurzel");
       simpleReplaceInTxtbox(/[Cc]ube root/g, "Kubikwurzel");
       simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
-      simpleReplaceInTxtbox(/Summary(:?) ?/g, "Zusammenfassung\1");
       simpleReplaceInTxtbox(/Conclusion(:?) ?/g, "Schlussfolgerung\1");
+      simpleReplaceInTxtbox(/Summary(:?) ?/g, "Zusammenfassung\1");
       simpleReplaceInTxtbox(/Express your answer in the form/g, "Schreibe deine Antwort in der Form");
       simpleReplaceInTxtbox(/ is real and complex/g, " ist eine reale und komplexe Zahl");
       simpleReplaceInTxtbox(/ is pure imaginary and complex/g, " ist rein imaginär und daher eine komplexe Zahl");
@@ -297,6 +297,12 @@ function key_event(e) {
       simpleReplaceInTxtbox(/ converges/g, " konvergiert");
       simpleReplaceInTxtbox(/ diverges/g, " divergiert");
       simpleReplaceInTxtbox(/Only/g, "Nur");
+      simpleReplaceInTxtbox(/\bYes\b/g, "Ja");
+      simpleReplaceInTxtbox(/\byes\b/g, "ja");
+      simpleReplaceInTxtbox(/\bNo\b/g, "Nein");
+      simpleReplaceInTxtbox(/\bno\b/g, "nein");
+      simpleReplaceInTxtbox(/\bbut\b/g, "aber");
+      simpleReplaceInTxtbox(/\bBut\b/g, "Aber");
 
   }
 }
