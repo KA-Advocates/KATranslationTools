@@ -25,11 +25,12 @@ For Firefox you can use [Greasmonkey](https://addons.mozilla.org/de/firefox/addo
 Go to either [Crowdin](https://crowdin.com/project/khanacademy/de) or the [KA translation dashboard](https://www.khanacademy.org/translations/de/) for your language and navigate the site until you can see a string and its translation.
 
 Key combos:
-* Alt + A : Show all excercises (only on translate.khanacadey.org)
-* Alt + N : Move to next exercise (only on translate.khanacadey.org)
-* Alt + P : Open all new Window with Strings in proofread modus on crowdin (only on translate.khanacadey.org)
-* Alt + U : Replace all formulas with formulas from englisch original (works on crowin.net and translate.khanacademy.org)
-* Alt + I : replace Image URLs and fix common german Bing-Translation Errors (works on crowin.net and translate.khanacademy.org)
+Note: Alt+A, Alt+N, Alt+P were used on the now defunct KA WYSIWYG Edit mode on translate.khanacademy.org.
+* Alt + A : Show all excercises (only on translate.khanacademy.org old WYSIWYG)
+* Alt + N : Move to next exercise (only on translate.khanacademy.org old WYSIWYG)
+* Alt + P : Open all new Window with Strings in proofread modus on crowdin (only on translate.khanacadey.org old WYSIWYG)
+* Alt + U : Replace all formulas with formulas from englisch original (works on crowin.net, translate.khanacademy.org and translation portal)
+* Alt + I : replace Image URLs and fix common german Bing-Translation Errors (works on crowin.net, translate.khanacademy.org and translation portal)
 * Alt + W : Auto-fix coordinates. Works only for coordinates WITHOUT operators.
 * Alt + Q : Other fixes. Currently: Convert $\\$123$ to $123{\,}€$ ; Convert simple numbers with dot to comma
 * Alt + L : Show images
