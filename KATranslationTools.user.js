@@ -21,6 +21,134 @@
    Alt + L : Show images
    */
 
+   /**
+    * Alt+Q: Various fixes & autotranslations for common phrases
+    */
+   function altQAction() {
+        //Dollary
+        simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\,}€\$");
+        //Decimal dot to comma
+        simpleReplaceInTxtbox(/(-?\d+\}?)\.(-?\d+|\\\\[a-z]+\{\d+)/g, "$1{,}$2");
+        //In number: Need {\,} instead of {\ }
+        simpleReplaceInTxtbox(/(\d+)\{\\ \}(\d+)/g, "$1{\\,}$2");
+        //In number: Need percentage
+        simpleReplaceInTxtbox(/\\*\s*%\s*\$/g, "{\\,}\\%$$");
+        //daß -> dass
+        simpleReplaceInTxtbox(/daß/g, "dass");
+        //daß -> dass
+        simpleReplaceInTxtbox(/\.\s*\*\s+\*/g, ".**");
+        //40€ -> 40{\,}€ (simple cases)
+        simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\,}€");
+        simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\,}€$$");
+        //x-intercept / y-intercept
+        simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
+        simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
+        //and -> und and other simple phrase replacements
+        simpleReplaceInTxtbox(/Both ([A-Z][a-z]+) and ([A-Z][a-z]+)/g, "Sowohl $1 als auch $2");
+        simpleReplaceInTxtbox(/Yes, (.*) is correct but (.*) is not(\.?)/g, "Ja, $1 liegt richtig, aber $2 nicht.");
+        simpleReplaceInTxtbox(/^In conclusion, the equation has one solution:/g, "Zusammenfassend hat die Gleichung eine Lösung:");
+        simpleReplaceInTxtbox(/Find the complex conjugate (.*) of/g, "Finde die Konjugierte $1 von");
+        simpleReplaceInTxtbox(/Your answer should be a complex number in the form \$a\+bi\$ where \$a\$ and \$b\$ are real numbers./g, "Deine Antwort sollte eine Komplexe Zahl im Format $$a+bi$$ sein, wobei $$a$$ und $$b$$ reelle Zahlen sind.");
+        simpleReplaceInTxtbox(/What are the real and imaginary parts of (\$[a-z]\$) ?\?/g, "Was ist der Real- und Imaginärteil von $1 ?");
+        simpleReplaceInTxtbox(/Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?/g, "Sind die Vektoren $2 und $3 äquivalent?");
+        simpleReplaceInTxtbox(/Is the matrix (\$[A-Z]\$) invertible\?/g, "Ist die Matrix $1 invertierbar?");
+        simpleReplaceInTxtbox(/The answer is(:?)/g, "Die Antwort ist\1");
+        simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort$1");
+        simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
+        simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
+        simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
+        simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
+        simpleReplaceInTxtbox(/\bunits\b/g, "Einheiten");
+        simpleReplaceInTxtbox(/What type of number is/g, "Welche Art Zahl ist");
+        simpleReplaceInTxtbox(/Pythagorean theorem/g, "Satz des Pythagoras");
+        simpleReplaceInTxtbox(/Step(\s+\d+)/g, "Schritt\1");
+        simpleReplaceInTxtbox(/[Ss]quare root/g, "Quadratwurzel");
+        simpleReplaceInTxtbox(/[Cc]ube root/g, "Kubikwurzel");
+        simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
+        simpleReplaceInTxtbox(/Conclusion(:?) ?/g, "Schlussfolgerung\1");
+        simpleReplaceInTxtbox(/Summary(:?) ?/g, "Zusammenfassung\1");
+        simpleReplaceInTxtbox(/Express your answer in the form/g, "Schreibe deine Antwort in der Form");
+        simpleReplaceInTxtbox(/ is real and complex/g, " ist eine reale und komplexe Zahl");
+        simpleReplaceInTxtbox(/ is pure imaginary and complex/g, " ist rein imaginär und daher eine komplexe Zahl");
+        simpleReplaceInTxtbox(/ is complex/g, " ist eine komplexe Zahl");
+        simpleReplaceInTxtbox(/ unit /g, " Einheit");
+        simpleReplaceInTxtbox(/ units /g, " Einheiten ");
+        simpleReplaceInTxtbox(/ units$/g, " Einheiten");
+        simpleReplaceInTxtbox(/ unit$/g, " Einheit");
+        simpleReplaceInTxtbox(/\bAnswer\b/g, "Antwort");
+        simpleReplaceInTxtbox(/ and so /g, ", also gilt: ");
+        simpleReplaceInTxtbox(/ and /g, " und ");
+        simpleReplaceInTxtbox(/ or /g, " oder ");
+        simpleReplaceInTxtbox(/\bThis is\b/g, "Das ist");
+        simpleReplaceInTxtbox(/\bSolving for\b/g, "Auflösen nach");
+        simpleReplaceInTxtbox(/ for /g, " für ");
+        simpleReplaceInTxtbox(/ converges/g, " konvergiert");
+        simpleReplaceInTxtbox(/ diverges/g, " divergiert");
+        simpleReplaceInTxtbox(/Only/g, "Nur");
+        simpleReplaceInTxtbox(/\bYes\b/g, "Ja");
+        simpleReplaceInTxtbox(/\byes\b/g, "ja");
+        simpleReplaceInTxtbox(/\bNo\b/g, "Nein");
+        simpleReplaceInTxtbox(/\bno\b/g, "nein");
+        simpleReplaceInTxtbox(/\bbut\b/g, "aber");
+        simpleReplaceInTxtbox(/\bBut\b/g, "Aber");
+        simpleReplaceInTxtbox(/\bpoints\b/g, "Punkte");
+        simpleReplaceInTxtbox(/\bpoint\b/g, "Punkt");
+        simpleReplaceInTxtbox(/\b[Ss]catterplot\b/g, "Streudiagramm");
+        simpleReplaceInTxtbox(/\bFill in the blank\b/g, "Fülle den Platzhalter aus");
+   }
+
+   /**
+    * Alt+W: Fix coordinates
+    */
+   function altWAction() {    
+        var expr = /\$([A-Z]?\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*\)(\}?)\$/g;
+        simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
+   }
+
+   function altUAction() {
+      //Find \\text{...} segments that we can re-insert later
+      var textSegments = findTextSegments();
+      // TODO: need to correctly handle escpade Dollar signs e.g. \$ should not be machted as start or end string works in Python and PHP \$.+?(?<!\\)\$ but no in javascript
+      var expr = /(\$.+?\$)/g
+      var expr2 = /(\$.+?\$)/g
+      replacePattern(expr,expr2);
+      //Re-insert text segments
+      replaceTextSegments(textSegments);
+   }
+
+   /**
+    * Alt+I: Image fixes and replace image URLs
+    */
+   function altIAction() {
+      //Fix the Bing ImgURL error
+      txtBox.innerHTML = txtBox.innerHTML.replace('![] (','![](');
+      txtBox.innerHTML = txtBox.innerHTML.replace('! [] (','![](');
+      txtBox.innerHTML = txtBox.innerHTML.replace('Interaktive Grafik','interactive-graph');
+      txtBox.innerHTML = txtBox.innerHTML.replace(/Radio/g,'radio');
+      txtBox.innerHTML = txtBox.innerHTML.replace(/Eingabe-Zahl/,'input-number');  
+      txtBox.innerHTML = txtBox.innerHTML.replace(/Eingabe-Nummer/g,'input-number');
+      txtBox.innerHTML = txtBox.innerHTML.replace(/numerische Eingabe/g,'numeric-input'); 
+      txtBox.innerHTML = txtBox.innerHTML.replace(/numerische-Eingang/g,'numeric-input');    
+      txtBox.innerHTML = txtBox.innerHTML.replace(/☃ Bild/g,'☃ image');
+      txtBox.innerHTML = txtBox.innerHTML.replace('**How','**Wie');
+      txtBox.innerHTML = txtBox.innerHTML.replace('**What','**Was');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ ones}}/g,'\\text{ Einer}}');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ one}}/g,'\\text{ Einer}}');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ tens}}/g,'\\text{ Zehner}}');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ ten}}/g,'\\text{ Zehner}}');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ hundred}}/g,'\\text{ Hunderter}}');
+      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ hundreds}}/g,'\\text{ Hunderter}}');
+      
+      //Not sure what alanis stuff above should do, but it doesn't work. This one does.
+      simpleReplaceInTxtbox(/!\s+\[\]\s+\(/g, "![](");
+
+      // on regex for english, and second for translation string
+      var expr =  /!\[\]\((.+?)\)/g
+      var expr2 =  /!\[\]\((.+?)\)/g    
+      
+      replacePattern(expr,expr2); //causes exception.
+   }
+
   /**
    * Get the text value in the textbox.
    * For debugging purposes ONLY. The information where to replace
@@ -107,6 +235,25 @@
       }
   }
 
+  /**
+   * Alt+P: Proofread mode. Only works if you have proofread permission
+   */
+  function altPAction() {
+    // extract the exercise name e.g. exercises=rounding-to-the-nearest-ten-or-hundred#xe9e1a3b9f44d9837
+    var expr =  /.+=(.+)#.+/g
+    var url = window.location.href;
+    var result = expr.exec(url);
+    
+    // todo find out the language which is currently used on translate.khanacademy.org
+    var proof = "https://crowdin.com/proofread/khanacademy/all/enus-de#q=e/";
+    var url = proof + result[1]
+    console.log(url);
+    window.open(url,'_blank');
+    if(chrome) {
+      window.location.href = url;
+    }
+  }
+
   var imagesShown = false;
 
   /**
@@ -150,24 +297,12 @@
     
     // Alt+P open this exercise in the proofread modus, only works if you have proofread permission on crowdin
     if (e.altKey && e.keyCode == 80) {
-        // extract the exercise name e.g. exercises=rounding-to-the-nearest-ten-or-hundred#xe9e1a3b9f44d9837
-        var expr =  /.+=(.+)#.+/g
-        var url = window.location.href;
-        var result = expr.exec(url);
-        
-        // todo find out the language which is currently used on translate.khanacademy.org
-        var proof = "https://crowdin.com/proofread/khanacademy/all/enus-de#q=e/";
-        var url = proof + result[1]
-        console.log(url);
-        window.open(url,'_blank');
-        if(chrome) {
-          window.location.href = url;
-        }
+        altPAction();
     }    
       
     // Alt+A for showing all exercise questions  
     if (e.altKey && e.keyCode == 65) {
-      showAllQuestions();
+        showAllQuestions();
     }  
     
     // Alt+N to move to the next exercise on translate.khanacademy.org
@@ -183,35 +318,7 @@
     }  
     // match Alt+I replace KA image urls & fix the Bing ImgURL error
     if (e.altKey && e.keyCode == 73) {
-
-      //Fix the Bing ImgURL error
-      txtBox.innerHTML = txtBox.innerHTML.replace('![] (','![](');
-      txtBox.innerHTML = txtBox.innerHTML.replace('! [] (','![](');
-      txtBox.innerHTML = txtBox.innerHTML.replace('Interaktive Grafik','interactive-graph');
-      txtBox.innerHTML = txtBox.innerHTML.replace(/Radio/g,'radio');
-      txtBox.innerHTML = txtBox.innerHTML.replace(/Eingabe-Zahl/,'input-number');  
-      txtBox.innerHTML = txtBox.innerHTML.replace(/Eingabe-Nummer/g,'input-number');
-      txtBox.innerHTML = txtBox.innerHTML.replace(/numerische Eingabe/g,'numeric-input'); 
-      txtBox.innerHTML = txtBox.innerHTML.replace(/numerische-Eingang/g,'numeric-input');    
-      txtBox.innerHTML = txtBox.innerHTML.replace(/☃ Bild/g,'☃ image');
-      txtBox.innerHTML = txtBox.innerHTML.replace('**How','**Wie');
-      txtBox.innerHTML = txtBox.innerHTML.replace('**What','**Was');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ ones}}/g,'\\text{ Einer}}');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ one}}/g,'\\text{ Einer}}');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ tens}}/g,'\\text{ Zehner}}');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ ten}}/g,'\\text{ Zehner}}');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ hundred}}/g,'\\text{ Hunderter}}');
-      txtBox.innerHTML = txtBox.textContent.replace(/\\text{ hundreds}}/g,'\\text{ Hunderter}}');
-      
-      //Not sure what alanis stuff above should do, but it doesn't work. This one does.
-      simpleReplaceInTxtbox(/!\s+\[\]\s+\(/g, "![](");
-
-      // on regex for english, and second for translation string
-      var expr =  /!\[\]\((.+?)\)/g
-      var expr2 =  /!\[\]\((.+?)\)/g    
-      
-      replacePattern(expr,expr2); //causes exception.
-
+        altIAction()
     }
     // Alt+L: Show images in text
     if (e.altKey && e.keyCode == 76) {
@@ -225,93 +332,15 @@
     }
     // Replace math formulas contained in Dollar signs, Alt+U
     if (e.altKey && e.keyCode == 85) {
-          //Find \\text{...} segments that we can re-insert later
-          var textSegments = findTextSegments();
-        // TODO: need to correctly handle escpade Dollar signs e.g. \$ should not be machted as start or end string works in Python and PHP \$.+?(?<!\\)\$ but no in javascript
-          var expr = /(\$.+?\$)/g
-          var expr2 = /(\$.+?\$)/g
-          replacePattern(expr,expr2);
-          //Re-insert text segments
-          replaceTextSegments(textSegments);
+        altUAction();
     }
     // Fix coordinates, Alt+W
     if (e.altKey && e.keyCode == 87) {
-        var expr = /\$([A-Z]?\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*\)(\}?)\$/g;
-        simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
+        altWAction();
     }
     // Other fixes, Alt+Q
     if (e.altKey && e.keyCode == 81) {
-        //Dollary
-        simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\,}€\$");
-        //Decimal dot to comma
-        simpleReplaceInTxtbox(/(-?\d+\}?)\.(-?\d+|\\\\[a-z]+\{\d+)/g, "$1{,}$2");
-        //In number: Need {\,} instead of {\ }
-        simpleReplaceInTxtbox(/(\d+)\{\\ \}(\d+)/g, "$1{\\,}$2");
-        //In number: Need percentage
-        simpleReplaceInTxtbox(/\\*\s*%\s*\$/g, "{\\,}\\%$$");
-        //daß -> dass
-        simpleReplaceInTxtbox(/daß/g, "dass");
-        //daß -> dass
-        simpleReplaceInTxtbox(/\.\s*\*\s+\*/g, ".**");
-        //40€ -> 40{\,}€ (simple cases)
-        simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\,}€");
-        simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\,}€$$");
-        //x-intercept / y-intercept
-        simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
-        simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
-        //and -> und and other simple phrase replacements
-        simpleReplaceInTxtbox(/Both ([A-Z][a-z]+) and ([A-Z][a-z]+)/g, "Sowohl $1 als auch $2");
-        simpleReplaceInTxtbox(/Yes, (.*) is correct but (.*) is not(\.?)/g, "Ja, $1 liegt richtig, aber $2 nicht.");
-        simpleReplaceInTxtbox(/^In conclusion, the equation has one solution:/g, "Zusammenfassend hat die Gleichung eine Lösung:");
-        simpleReplaceInTxtbox(/Find the complex conjugate (.*) of/g, "Finde die Konjugierte $1 von");
-        simpleReplaceInTxtbox(/Your answer should be a complex number in the form \$a\+bi\$ where \$a\$ and \$b\$ are real numbers./g, "Deine Antwort sollte eine Komplexe Zahl im Format $$a+bi$$ sein, wobei $$a$$ und $$b$$ reelle Zahlen sind.");
-        simpleReplaceInTxtbox(/What are the real and imaginary parts of (\$[a-z]\$) ?\?/g, "Was ist der Real- und Imaginärteil von $1 ?");
-        simpleReplaceInTxtbox(/Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?/g, "Sind die Vektoren $2 und $3 äquivalent?");
-        simpleReplaceInTxtbox(/Is the matrix (\$[A-Z]\$) invertible\?/g, "Ist die Matrix $1 invertierbar?");
-        simpleReplaceInTxtbox(/The answer is(:?)/g, "Die Antwort ist\1");
-        simpleReplaceInTxtbox(/The answer(:?)/g, "Die Antwort$1");
-        simpleReplaceInTxtbox(/ is not a factor of /g, " ist kein Faktor von ");
-        simpleReplaceInTxtbox(/In conclusion,/g, "Zusammenfassend gilt:");
-        simpleReplaceInTxtbox(/To conclude\s*[:,]?(\s*)/g, "Zusammenfassend gilt: ");
-        simpleReplaceInTxtbox(/This is because/g, "Das gilt, weil");
-        simpleReplaceInTxtbox(/\bunits\b/g, "Einheiten");
-        simpleReplaceInTxtbox(/What type of number is/g, "Welche Art Zahl ist");
-        simpleReplaceInTxtbox(/Pythagorean theorem/g, "Satz des Pythagoras");
-        simpleReplaceInTxtbox(/Step(\s+\d+)/g, "Schritt\1");
-        simpleReplaceInTxtbox(/[Ss]quare root/g, "Quadratwurzel");
-        simpleReplaceInTxtbox(/[Cc]ube root/g, "Kubikwurzel");
-        simpleReplaceInTxtbox(/Let's start by replacing (.*) (by|with)/g, "Beginnen wir mit dem Ersetzen von $1 durch");
-        simpleReplaceInTxtbox(/Conclusion(:?) ?/g, "Schlussfolgerung\1");
-        simpleReplaceInTxtbox(/Summary(:?) ?/g, "Zusammenfassung\1");
-        simpleReplaceInTxtbox(/Express your answer in the form/g, "Schreibe deine Antwort in der Form");
-        simpleReplaceInTxtbox(/ is real and complex/g, " ist eine reale und komplexe Zahl");
-        simpleReplaceInTxtbox(/ is pure imaginary and complex/g, " ist rein imaginär und daher eine komplexe Zahl");
-        simpleReplaceInTxtbox(/ is complex/g, " ist eine komplexe Zahl");
-        simpleReplaceInTxtbox(/ unit /g, " Einheit");
-        simpleReplaceInTxtbox(/ units /g, " Einheiten ");
-        simpleReplaceInTxtbox(/ units$/g, " Einheiten");
-        simpleReplaceInTxtbox(/ unit$/g, " Einheit");
-        simpleReplaceInTxtbox(/\bAnswer\b/g, "Antwort");
-        simpleReplaceInTxtbox(/ and so /g, ", also gilt: ");
-        simpleReplaceInTxtbox(/ and /g, " und ");
-        simpleReplaceInTxtbox(/ or /g, " oder ");
-        simpleReplaceInTxtbox(/\bThis is\b/g, "Das ist");
-        simpleReplaceInTxtbox(/\bSolving for\b/g, "Auflösen nach");
-        simpleReplaceInTxtbox(/ for /g, " für ");
-        simpleReplaceInTxtbox(/ converges/g, " konvergiert");
-        simpleReplaceInTxtbox(/ diverges/g, " divergiert");
-        simpleReplaceInTxtbox(/Only/g, "Nur");
-        simpleReplaceInTxtbox(/\bYes\b/g, "Ja");
-        simpleReplaceInTxtbox(/\byes\b/g, "ja");
-        simpleReplaceInTxtbox(/\bNo\b/g, "Nein");
-        simpleReplaceInTxtbox(/\bno\b/g, "nein");
-        simpleReplaceInTxtbox(/\bbut\b/g, "aber");
-        simpleReplaceInTxtbox(/\bBut\b/g, "Aber");
-        simpleReplaceInTxtbox(/\bpoints\b/g, "Punkte");
-        simpleReplaceInTxtbox(/\bpoint\b/g, "Punkt");
-        simpleReplaceInTxtbox(/\b[Ss]catterplot\b/g, "Streudiagramm");
-        simpleReplaceInTxtbox(/\bFill in the blank\b/g, "Fülle den Platzhalter aus");
-
+        altQAction();
     }
   }
   document.addEventListener('keydown', key_event, true);  
