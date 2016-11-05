@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+	<body onload="loadOptions()">
+    <h1>Khan Academy Translation Tools</h1>
+	
+	Load standard Rules for&nbsp;<select id="language">
+	  <option value="">-</option>
+      <option value="german">German</option>
+    </select>
+	<br/><br/>
+    <textarea style="width: 650px; height: 400px;" id="translation-rules"></textarea>
+ 	
+	<p>
+	  <div id="status"></div>
+	<button id="save">Save</button>
+	</p>
+
+    <script src="options.js"></script>
+
+  </body>
+</html>

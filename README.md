@@ -39,3 +39,14 @@ Frequently used key combinations (*Note:* You can submit in Crowdin with Ctrl+Re
 
 * Alt+CWQ: Copy english source string to translation, autofix coordinates and others (includes autotranslation of common phrases). This is used for simple strings like "In conclusion, $x=123$" or "$x=5.$3" (which is translated to $x=5{,}3$)
 * Ctrl+V Alt+UIWQ: Insert string from clipboard (which you need to Ctrl+C-copy from a similar string which you have already translated), then replace formulas (keeps "\\text{...}" elements from your translation!) and image URLs, then fix coordinates and apply various fixes including auto-translation of common phrases.
+
+
+## Building the extension
+
+to build:
+ gulp build or gulp watch
+
+to package:
+ gulp package
+ 
+The extension was created using https://github.com/yeoman/generator-chrome-extension

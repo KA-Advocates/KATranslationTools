@@ -1,0 +1,77 @@
+Interaktive Grafik,interactive-graph
+Radio,radio
+Eingabe-Zahl,input-number
+Eingabe-Nummer,input-number
+numerische Eingabe,numeric-input 
+numerische-Eingang,numeric-input    
+☃ Bild,☃ image
+
+\\text{ ones}},\\text{ Einer}}
+\\text{ one}},\\text{ Einer}}
+\\text{ tens}},\\text{ Zehner}}
+\\text{ ten}},\\text{ Zehner}}
+\\text{ hundred}},\\text{ Hunderter}}
+\\text{ hundreds}},\\text{ Hunderter}}
+
+//daß -> dass
+daß,dass
+//daß -> dass
+\.\s*\*\s+\*,.**
+//40€ -> 40{\,}€ (simple cases)
+\$(\d+)€,$$$1{\\,}€
+(\d+)€$,$1{\\,}€$$
+//x-intercept / y-intercept
+\$x\$-intercept,Schnittpunkt mit der $$x$$-Achse
+\$y\$-intercept,Schnittpunkt mit der $$y$$-Achse
+//and -> und and other simple phrase replacements
+Both ([A-Z][a-z]+) and ([A-Z][a-z]+),Sowohl $1 als auch $2
+Yes, (.*) is correct but (.*) is not(\.?),Ja, $1 liegt richtig, aber $2 nicht.
+^In conclusion, the equation has one solution:,Zusammenfassend hat die Gleichung eine Lösung:
+Find the complex conjugate (.*) of,Finde die Konjugierte $1 von
+Your answer should be a complex number in the form \$a\+bi\$ where \$a\$ and \$b\$ are real numbers.,Deine Antwort sollte eine Komplexe Zahl im Format $$a+bi$$ sein, wobei $$a$$ und $$b$$ reelle Zahlen sind.
+What are the real and imaginary parts of (\$[a-z]\$) ?\?,Was ist der Real- und Imaginärteil von $1 ?
+Are( the)? vectors (\$.+\$) and (\$.+\$) equivalent ?\?,Sind die Vektoren $2 und $3 äquivalent?
+Is the matrix (\$[A-Z]\$) invertible\?,Ist die Matrix $1 invertierbar?
+The answer is(:?),Die Antwort ist\1
+The answer(:?),Die Antwort$1
+ is not a factor of , ist kein Faktor von 
+In conclusion,,Zusammenfassend gilt:
+To conclude\s*[:,]?(\s*),Zusammenfassend gilt: 
+This is because,Das gilt, weil
+\bunits\b,Einheiten
+What type of number is,Welche Art Zahl ist
+Pythagorean theorem,Satz des Pythagoras
+Step(\s+\d+),Schritt\1
+[Ss]quare root,Quadratwurzel
+[Cc]ube root,Kubikwurzel
+Let's start by replacing (.*) (by|with),Beginnen wir mit dem Ersetzen von $1 durch
+Conclusion(:?) ?,Schlussfolgerung\1
+Summary(:?) ?,Zusammenfassung\1
+Express your answer in the form,Schreibe deine Antwort in der Form
+ is real and complex, ist eine reale und komplexe Zahl
+ is pure imaginary and complex, ist rein imaginär und daher eine komplexe Zahl
+ is complex, ist eine komplexe Zahl
+ unit , Einheit
+ units , Einheiten 
+ units$, Einheiten
+ unit$, Einheit
+\bAnswer\b,Antwort
+ and so ,, also gilt: 
+ and , und 
+ or , oder 
+\bThis is\b,Das ist
+\bSolving for\b,Auflösen nach
+ for , für 
+ converges, konvergiert
+ diverges, divergiert
+Only,Nur
+\bYes\b,Ja
+\byes\b,ja
+\bNo\b,Nein
+\bno\b,nein
+\bbut\b,aber
+\bBut\b,Aber
+\bpoints\b,Punkte
+\bpoint\b,Punkt
+\b[Ss]catterplot\b,Streudiagramm
+\bFill in the blank\b,Fülle den Platzhalter aus

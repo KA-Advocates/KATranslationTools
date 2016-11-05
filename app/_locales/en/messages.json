@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "KATranslationTools",
+    "description": "The application Name"
+  },
+  "appDescription": {
+    "message": "Khan Academy Translation Tools simplify the translation process on crowdin trough various shortcuts and icons.",
+    "description": "The description of the application"
+  }
+}

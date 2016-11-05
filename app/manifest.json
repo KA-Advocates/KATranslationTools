@@ -1,0 +1,42 @@
+{
+  "name": "__MSG_appName__",
+  "version": "0.6.0",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "author": "Alain Schäfer & Uli Köhler (KADeutsch)",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "storage",
+	"file://*/*"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "browser_action": {
+     "default_icon":  "images/icon-128.png",
+	  "default_title": "Alt+W, Alt+I, Alt+Q on crowdin"
+  },
+  "background": {
+	"scripts": [ 
+		"scripts/background.js"
+	]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+	     "https://crowdin.com/translate/khanacademy/*",
+		 "https://translate.khanacademy.org/translate/*"
+	  ],
+      "js": [
+	    "scripts/zepto.js",
+        "scripts/KATranslationTools.user.js"
+      ],
+      "all_frames": true
+    }
+  ]
+}
