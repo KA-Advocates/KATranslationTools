@@ -26,20 +26,20 @@
     */
    function altQAction() {
         //Dollary
-        simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\,}€\$");
+        simpleReplaceInTxtbox(/\$\\\\\$(-?\d+([.,]\d+)?)\$/g, "$$$1{\\\\,}€\$");
         //Decimal dot to comma
         simpleReplaceInTxtbox(/(-?\d+\}?)\.(-?\d+|\\\\[a-z]+\{\d+)/g, "$1{,}$2");
         //In number: Need {\,} instead of {\ }
-        simpleReplaceInTxtbox(/(\d+)\{\\ \}(\d+)/g, "$1{\\,}$2");
+        simpleReplaceInTxtbox(/(\d+)\{\\ \}(\d+)/g, "$1{\\\\,}$2");
         //In number: Need percentage
-        simpleReplaceInTxtbox(/\\*\s*%\s*\$/g, "{\\,}\\%$$");
+        simpleReplaceInTxtbox(/\\*\s*%\s*\$/g, "{\\\\,}\\%$$");
         //daß -> dass
         simpleReplaceInTxtbox(/daß/g, "dass");
         //daß -> dass
         simpleReplaceInTxtbox(/\.\s*\*\s+\*/g, ".**");
         //40€ -> 40{\,}€ (simple cases)
-        simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\,}€");
-        simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\,}€$$");
+        simpleReplaceInTxtbox(/\$(\d+)€/g, "$$$1{\\\\,}€");
+        simpleReplaceInTxtbox(/(\d+)€$/g, "$1{\\\\,}€$$");
         //x-intercept / y-intercept
         simpleReplaceInTxtbox(/\$x\$-intercept/g, "Schnittpunkt mit der $$x$$-Achse");
         simpleReplaceInTxtbox(/\$y\$-intercept/g, "Schnittpunkt mit der $$y$$-Achse");
@@ -102,7 +102,7 @@
     */
    function altWAction() {    
         var expr = /\$([A-Z]?\{?)\(\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*[,;|]\s*(-?\d+(([\.,]|\{,\})\d+)?|-?[a-z]|-?\\\\[a-z]+[A-Z]?\{-?\d+[.,]?\d*\})\s*\)(\}?)\$/g;
-        simpleReplaceInTxtbox(expr, "$$$1($2{\\,}|{\\,}$5)$8$$");
+        simpleReplaceInTxtbox(expr, "$$$1($2{\\\\,}|{\\\\,}$5)$8$$");
    }
 
    function altUAction() {
